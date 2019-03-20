@@ -1,14 +1,30 @@
+import structure.Issue;
 import structure.Project;
+import structure.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainWindow extends JFrame {
+
+
+    User user1 = new User(1, "User1");
+    User user2 = new User(2, "User2");
+
+    Project project1 = new Project(1, "Project1");
+    Project project2 = new Project(2, "Project2");
+
+    Issue issue1 = new Issue(1, "Сделать мир лучше", project1.getProjectID(), user1.getUserID());
+    Issue issue2 = new Issue(2, "Сделать мир лучше еще раз", project2.getProjectID(), user1.getUserID());
+
     //основное окно
-    private JPanel mainWindow = new JPanel();
+    private JPanel catalogIssues = new JPanel();
 
     //для вывода списка ошибок
     private JList issuesList = new JList();
@@ -26,15 +42,48 @@ public class MainWindow extends JFrame {
         super("Система контроля ошибок");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
-        // mainWindow.setLayout( new BorderLayout(5,5));
-        mainWindow.setLayout(new BorderLayout(5, 5));
-        mainWindow.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5, ));
+        // catalogIssues.setLayout( new BorderLayout(5,5));
+        catalogIssues.setLayout(new BorderLayout(5, 5));
+        catalogIssues.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5 ));
 
         buttonsPanel.setLayout(new GridLayout(1, 2, 5, 5));
 
         //окно диалога создания новой записи
         JDialog createNewIssuesDialog = new JDialog(MainWindow.this, "Создание новой записи", true);
         JPanel createNewIssuesPanel = new JPanel();
+        createNewIssuesDialog.add(createNewIssuesPanel);
+
+// список файлов
+        String issue[] = {issue1.getIssueText(), issue2.getIssueText()};
+
+        listOfIssuesScroll.setPreferredSize(new Dimension(400, 500)); //минимальный размер
+        issuesList.setListData(issue);
+        issuesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); //можно выделять несколько элементов
+
+        //слушатель нажатия на элемент листа
+        issuesList.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+
 
         // Слушатель нажатия кнопки "Добавить ошибку"
         buttonAddNewIssues.addActionListener(new ActionListener() {
@@ -51,41 +100,23 @@ public class MainWindow extends JFrame {
                 try {
 //                        ParserPZ parserPZ = new ParserPZ();
 //                        DialogWindow dialogWindow = new DialogWindow(MyWindow.this, parserPZ.filePath);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
         });
 
-// слушатель нажатия кнопки Найти объявленные закупки
-        buttonNewFindIzvescheniya.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
-        //  добавление кнопок в панели
-        panelForPZ.add(buttonNewFindPZ);
-        panelForIzvescheniya.add(buttonNewFindIzvescheniya);
-        panelForDogovory.add(buttonForDogovory);
-
-
-        // mainWindow.setLayout(new GridLayout());
+        // добавление кнопок в панель кнопок
+        buttonsPanel.add(buttonAddNewIssues);
+        buttonsPanel.add(buttonReport);
 
         // добавление панелей в основоное окно
-
-        mainWindow.add(panelForPZ);
-        mainWindow.add(panelForIzvescheniya);
-        mainWindow.add(panelForDogovory);
-
-        // mainWindow.add(panelForIzvescheniya,BorderLayout.SOUTH);
+        catalogIssues.setLayout(new BorderLayout());
+        catalogIssues.add(listOfIssuesScroll, BorderLayout.CENTER);
+        catalogIssues.add(buttonsPanel, BorderLayout.SOUTH);
 
 
-        getContentPane().add(mainWindow);
+        getContentPane().add(catalogIssues);
         setSize(600, 600);
         setLocationRelativeTo(null); // посередине
         setVisible(true);
