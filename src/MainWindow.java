@@ -1,6 +1,5 @@
 import structure.Issue;
-import structure.Project;
-import structure.User;
+import structure.ReadAllIssues;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,20 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.util.ArrayList;
 
 public class MainWindow extends JFrame {
 
 
-    User user1 = new User(1, "User1");
-    User user2 = new User(2, "User2");
-
-    Project project1 = new Project(1, "Project1");
-    Project project2 = new Project(2, "Project2");
-
-    Issue issue1 = new Issue(1, "Сделать мир лучше", project1.getProjectID(), user1.getUserID());
-    Issue issue2 = new Issue(2, "Сделать мир лучше еще раз", project2.getProjectID(), user1.getUserID());
 
     //основное окно
     private JPanel catalogIssues = new JPanel();
@@ -53,8 +43,17 @@ public class MainWindow extends JFrame {
         JPanel createNewIssuesPanel = new JPanel();
         createNewIssuesDialog.add(createNewIssuesPanel);
 
-// список файлов
-        String issue[] = {issue1.getIssueText(), issue2.getIssueText()};
+        // список issues
+
+
+        ReadAllIssues listOfIssues = new ReadAllIssues();
+        ArrayList<Issue> listOfIssues1 = listOfIssues.issue;
+
+
+        //String issue[] = listOfIssues1.toArray();
+        //toArray():
+        String issue[] = listOfIssues.ReadAllIssuesToString();
+
 
         listOfIssuesScroll.setPreferredSize(new Dimension(400, 500)); //минимальный размер
         issuesList.setListData(issue);
