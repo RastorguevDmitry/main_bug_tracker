@@ -19,7 +19,7 @@ public class Main {
             public void run() {
                 try {
                     new MainWindow();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

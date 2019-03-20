@@ -1,7 +1,5 @@
 package structure;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -43,7 +41,7 @@ public class ReadAllIssues {
     }
 
 
-    public List<String> ReadAllIssuesFromFileToString() throws IOException {
+    public List<String> ReadAllIssuesFromFileToString() throws Exception {
 
         //запись из файла в Лист
         List<String> lines = Files.readAllLines(Paths.get("input.txt"), Charset.defaultCharset());
@@ -51,6 +49,16 @@ public class ReadAllIssues {
 //        //Массив для возврата
 //        String[] issuesToString= new String[lines.size()];
 //        issuesToString = lines.toArray(issuesToString);
+
+        for (String line:
+        lines) {
+            String nomerPZ = MyPatterns.getDateFromString(line);
+            System.out.println(nomerPZ);
+        }
+
+
+
+
 
         return lines;
 

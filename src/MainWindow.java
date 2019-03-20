@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class MainWindow extends JFrame {
     private ArrayList<String> listOfIssues = new ArrayList<>();
 
 
-    public MainWindow() throws IOException {
+    public MainWindow() throws Exception {
         super("Система контроля ошибок");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
