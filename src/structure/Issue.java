@@ -24,8 +24,8 @@ public class Issue {
     public Issue(int issueID, String issueText, Project project, User user) {
         this.issueID = issueID;
         this.issueText = issueText;
-        this.projectID = projectID;
-        this.userID = userID;
+        this.project = project;
+        this.user = user;
     }
 
 //    @Override

@@ -2,6 +2,8 @@ import structure.Issue;
 import structure.Project;
 import structure.User;
 
+import java.io.IOException;
+
 public class Main {
 
 
@@ -15,7 +17,11 @@ public class Main {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MainWindow();
+                try {
+                    new MainWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -7,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainWindow extends JFrame {
 
@@ -28,7 +30,7 @@ public class MainWindow extends JFrame {
     private ArrayList<String> listOfIssues = new ArrayList<>();
 
 
-    public MainWindow() {
+    public MainWindow() throws IOException {
         super("Система контроля ошибок");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
@@ -44,19 +46,15 @@ public class MainWindow extends JFrame {
         createNewIssuesDialog.add(createNewIssuesPanel);
 
         // список issues
+        List<String> listOfIssues = new ReadAllIssues().ReadAllIssuesFromFileToString();
 
+        //Массив для вывода
+        String[] issuesToString= new String[listOfIssues.size()];
+        issuesToString = listOfIssues.toArray(issuesToString);
 
-        ReadAllIssues listOfIssues = new ReadAllIssues();
-        ArrayList<Issue> listOfIssues1 = listOfIssues.issue;
-
-
-        //String issue[] = listOfIssues1.toArray();
-        //toArray():
-        String issue[] = listOfIssues.ReadAllIssuesToString();
-
+        issuesList.setListData(issuesToString);
 
         listOfIssuesScroll.setPreferredSize(new Dimension(400, 500)); //минимальный размер
-        issuesList.setListData(issue);
         issuesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); //можно выделять несколько элементов
 
         //слушатель нажатия на элемент листа

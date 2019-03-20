@@ -1,6 +1,12 @@
 package structure;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReadAllIssues {
     // Issue issue[];
@@ -29,13 +35,35 @@ public class ReadAllIssues {
         int i = 0;
         for (Issue issue: this.issue
              ) {
-            issuesToString[i]= issue.getIssueID() + " " + issue.getIssueText();
-
+            issuesToString[i]= issue.project.getProjectName() + " " +  issue.user.getUserName() + " " + issue.getIssueText();
+            i++;
         }
-        issue.add(issue1);
-        issue.add(issue2);
+
         return issuesToString;
     }
+
+
+    public List<String> ReadAllIssuesFromFileToString() throws IOException {
+
+        //запись из файла в Лист
+        List<String> lines = Files.readAllLines(Paths.get("input.txt"), Charset.defaultCharset());
+
+//        //Массив для возврата
+//        String[] issuesToString= new String[lines.size()];
+//        issuesToString = lines.toArray(issuesToString);
+
+        return lines;
+
+//        String text = Integer.toString(c);
+//        PrintWriter out = new PrintWriter("output.txt");
+//        out.println(text);
+//        out.close();
+
+
+
+    }
+
+
 
 
 //    public static ArrayList<Issue> toArray() {
