@@ -1,29 +1,30 @@
-import structure.Issue;
-import structure.Project;
-import structure.User;
+import structure.ReadAllIssues;
 
-import java.io.IOException;
+import java.util.List;
 
 public class Main {
 
-
-
     public static void main(String[] args) throws Exception {
 
+        // список issues
+        List<String> listOfIssues = new ReadAllIssues().ReadAllIssuesFromFileToString();
+
+        //Массив для вывода
+        String[] issuesToString= new String[listOfIssues.size()];
+        issuesToString = listOfIssues.toArray(issuesToString);
 
 
-
-
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new MainWindow();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        // для десктопного приложения
+//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    new MainWindow();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
 
     }

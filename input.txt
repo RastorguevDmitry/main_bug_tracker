@@ -1,4 +1,4 @@
-<Project>11 </Project><User></User><Issue></Issue>
-<Project>22 </Project><User></User><Issue></Issue>
-<Project>33 </Project><User></User><Issue></Issue>
-<Project> 3332</Project><User></User><Issue></Issue>
+<Project>Созадние программы</Project><User>Иван</User><Issue>добавить чтение данных</Issue>
+<Project>Улучшение программы</Project><User>Коля</User><Issue>загрузка из файла</Issue>
+<Project>Создание программы</Project><User>Артем</User><Issue>не работает кнопка</Issue>
+<Project>Создание программы</Project><User>Маша</User><Issue>не работает список</Issue>

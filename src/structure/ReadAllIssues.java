@@ -52,12 +52,13 @@ public class ReadAllIssues {
 
         for (String line:
         lines) {
-            String nomerPZ = MyPatterns.getDateFromString(line);
-            System.out.println(nomerPZ);
+            String project = MyPatterns.getDateFromString(line, MyPatterns.PATTERN.Project);
+            System.out.print(project + " - ");
+            String user = MyPatterns.getDateFromString(line, MyPatterns.PATTERN.User);
+            System.out.print(user + " - ");
+            String issue = MyPatterns.getDateFromString(line, MyPatterns.PATTERN.Issue);
+            System.out.println(issue);
         }
-
-
-
 
 
         return lines;
@@ -72,8 +73,4 @@ public class ReadAllIssues {
     }
 
 
-
-
-//    public static ArrayList<Issue> toArray() {
-//    }
 }
