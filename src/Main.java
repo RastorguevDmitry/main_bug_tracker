@@ -1,4 +1,4 @@
-import structure.ReadAllIssues;
+import structure.ReadIssues;
 
 import java.util.List;
 import java.util.Scanner;
@@ -17,6 +17,7 @@ public class Main {
             int input_numder = scanner.nextInt();
             switch (input_numder) {
                 case 0:
+                    System.out.println("Выход...");
                     System.exit(0);
                     break;
                 case 1:
@@ -68,7 +69,7 @@ public class Main {
 
     public static void allIssues() throws Exception {
         // список issues
-        List<String> listOfIssues = new ReadAllIssues().ReadAllIssuesFromFileToString();
+        List<String> listOfIssues = new ReadIssues().ReadAllIssuesFromFileToString();
 
         //Массив для вывода
         String[] issuesToString = new String[listOfIssues.size()];
@@ -80,10 +81,10 @@ public class Main {
         System.out.print("Введите название проекта (для возврата введите 0):  ");
         scanner.nextLine();
         String inputProject = scanner.nextLine();
-
+        if (inputProject.equals("0")) return;
         System.out.print("Введите имя пользователя (для возврата введите 0):  ");
         String inputUser = scanner.nextLine();
-
+        if (inputUser.equals("0")) return;
         System.out.println("\"" + inputUser + "\" в проект \"" + inputProject + "\" добавил следующие записи:");
 
         //поиск записей

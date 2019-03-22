@@ -2,10 +2,15 @@ package structure;
 
 public class Project {
     int projectID;
+
     String projectName;
 
     public Project(int projectID, String projectName) {
         this.projectID = projectID;
+        this.projectName = projectName;
+    }
+
+    public Project(String projectName) {
         this.projectName = projectName;
     }
 

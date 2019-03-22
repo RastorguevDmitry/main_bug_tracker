@@ -2,9 +2,10 @@ package structure;
 
 public class Issue {
 
-
     int issueID;
+
     String issueText;
+
     int projectID;
     int userID;
 
@@ -12,6 +13,12 @@ public class Issue {
     User user;
 
     public Issue() {
+    }
+
+    public Issue(Project project, User user, String issueText) {
+        this.issueText = issueText;
+        this.project = project;
+        this.user = user;
     }
 
     public Issue(int issueID, String issueText, int projectID, int userID) {
@@ -28,19 +35,11 @@ public class Issue {
         this.user = user;
     }
 
-//    @Override
-//    public String toString() {
-//        this.issueID = issueID;
-//        this.issueText = issueText;
-//        this.projectID = projectID;
-//        this.userID = userID;
-//
-//        issueID
-//
-//
-//
-//        return super.toString();
-//    }
+
+    @Override
+    public String toString() {
+        return project.getProjectName() + " - " + user.getUserName() + " - " + issueText ;
+    }
 
     public int getIssueID() {
         return issueID;
