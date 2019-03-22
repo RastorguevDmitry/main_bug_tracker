@@ -1,3 +1,4 @@
+import structure.Issue;
 import structure.ReadIssues;
 
 import java.util.List;
@@ -69,11 +70,13 @@ public class Main {
 
     public static void allIssues() throws Exception {
         // список issues
-        List<String> listOfIssues = new ReadIssues().ReadAllIssuesFromFileToString();
+        new ReadIssues().ReadAllIssuesFromFile();
+        List<Issue> listOfIssues = new ReadIssues().issue;
 
-        //Массив для вывода
-        String[] issuesToString = new String[listOfIssues.size()];
-        issuesToString = listOfIssues.toArray(issuesToString);
+        for (Issue issue : listOfIssues) {
+            System.out.println(issue);
+        }
+
     }
 
 

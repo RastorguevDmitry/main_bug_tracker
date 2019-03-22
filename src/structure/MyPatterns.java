@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
 public class MyPatterns {
     enum PATTERN {Project, User, Issue}
 
-    ;
-
     private static Pattern patternALL = Pattern.compile("[><]"); // регулярные выражения
 
 
@@ -25,6 +23,5 @@ public class MyPatterns {
         return "0";
 
     }
-
 
 }
