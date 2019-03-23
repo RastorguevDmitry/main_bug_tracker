@@ -10,13 +10,11 @@ import static structure.Project.*;
 import static structure.ReadIssues.*;
 import static structure.User.*;
 
-
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-
 
         System.out.println("Система отслеживания ошибок");
         printMainText();

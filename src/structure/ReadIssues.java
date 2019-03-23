@@ -3,14 +3,9 @@ package structure;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static structure.Issue.issue;
-import static structure.Issue.uniqIssueText;
-import static structure.Project.uniqProjectName;
-import static structure.User.uniqUserName;
 
 public class ReadIssues {
 
