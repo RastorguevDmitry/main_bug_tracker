@@ -1,5 +1,9 @@
+import DB.IssuesDB;
 import structure.Issue;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
@@ -12,9 +16,33 @@ import static structure.User.*;
 
 public class Main {
 
+    public static final String DB_DIR = "c:/Users/rdi81/Java/IdeaProjects/main_bug_tracker/db";
+    public static final String DB_FILE = "bug_tracker";
+    public static final String DB_URL = "jdbc:h2:/" + DB_DIR + "/" + DB_FILE;
+    public static final String DB_Driver = "org.h2.Driver";
+
+
     private static Scanner scanner = new Scanner(System.in);
 
+
     public static void main(String[] args) throws Exception {
+
+
+
+        try{
+            IssuesDB stockExchangeDB = new IssuesDB();
+            stockExchangeDB.createTables();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Ошибка SQL !");
+        } catch (ClassNotFoundException e) {
+            System.out.println("JDBC драйвер для СУБД не найден!");
+        }
+
+
+
+
+
 
         System.out.println("Система отслеживания ошибок");
         printMainText();

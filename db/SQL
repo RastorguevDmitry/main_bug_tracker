@@ -1,0 +1,67 @@
+CREATE SCHEMA `issues` ;
+
+// создание таблицы пользователей
+CREATE TABLE `issues`.`users` (
+  `iduser` INT AUTO_INCREMENT NOT NULL,
+  `nameUser` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`iduser`),
+    UNIQUE INDEX `iduser_UNIQUE` (`iduser` ASC) VISIBLE,
+    UNIQUE INDEX `nameUser_UNIQUE` (`nameUser` ASC) VISIBLE
+    );
+
+// создание таблицы проектов
+CREATE TABLE `issues`.`projects` (
+  `idproject` INT NOT NULL AUTO_INCREMENT,
+  `nameProject` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idproject`),
+  UNIQUE INDEX `idproject_UNIQUE` (`idproject` ASC) VISIBLE,
+  UNIQUE INDEX `nameProject_UNIQUE` (`nameProject` ASC) VISIBLE);
+
+// создание таблицы ошибок
+CREATE TABLE `issues`.`issues` (
+  `idissue` INT AUTO_INCREMENT NOT NULL,
+  `issueText` VARCHAR(255) NOT NULL,
+  `iduser` INT NULL NOT NULL,
+  `idproject` INT NULL NOT NULL,
+  PRIMARY KEY (`idissue`),
+  INDEX `fk_project_idx` (`idproject` ASC) VISIBLE,
+  INDEX `fk_user_idx` (`iduser` ASC) VISIBLE,
+  CONSTRAINT `fk_project`
+    FOREIGN KEY (`idproject`)
+    REFERENCES `issues`.`projects` (`idProject`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user`
+    FOREIGN KEY (`iduser`)
+    REFERENCES `issues`.`users` (`iduser`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION);
+
+    //заполнение таблицы проектов
+    INSERT INTO `issues`.`projects` (`nameProject`) VALUES ('Project1');
+    INSERT INTO `issues`.`projects` (`nameProject`) VALUES ('Project2');
+    INSERT INTO `issues`.`projects` (`nameProject`) VALUES ('Project3');
+    INSERT INTO `issues`.`projects` (`nameProject`) VALUES ('Project4');
+    INSERT INTO `issues`.`projects` (`nameProject`) VALUES ('Project5');
+
+    //заполнение таблицы пользователей
+    INSERT INTO `issues`.`users` (`nameUser`) VALUES ('User1');
+    INSERT INTO `issues`.`users` (`nameUser`) VALUES ('User2');
+    INSERT INTO `issues`.`users` (`nameUser`) VALUES ('User3');
+
+    //заполнение таблицы Ошибок
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue1', '1', '1');
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue2', '1', '1');
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue1', '2', '1');
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue3', '1', '2');
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue4', '3', '3');
+    INSERT INTO `issues`.`issues` (`issueText`, `iduser`, `idproject`) VALUES ('Issue5', '1', '4');
+
+
+// выборка по User1 Project1
+use issues;
+
+select issues.issueText, users.nameUser, projects.nameProject  from issues
+left join users on users.iduser=issues.iduser
+left join projects on projects.idproject=issues.idproject
+where users.nameUser = "User1" AND  projects.nameProject = "Project1";
