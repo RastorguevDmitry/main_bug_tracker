@@ -1,8 +1,9 @@
 import DB.IssuesDB;
+import DB.ReadFromTable;
 import structure.Issue;
+import structure.MyPatterns;
+import structure.ReadIssues;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +12,6 @@ import java.util.stream.Collectors;
 
 import static structure.Issue.*;
 import static structure.Project.*;
-import static structure.ReadIssues.*;
 import static structure.User.*;
 
 public class Main {
@@ -27,11 +27,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-
-
         try{
-            IssuesDB stockExchangeDB = new IssuesDB();
-            stockExchangeDB.createTables();
+            IssuesDB issuesDB = new IssuesDB();
+            issuesDB.createTables();
+            ReadIssues.ReadAllIssuesFromFile();
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ошибка SQL !");
@@ -40,15 +40,12 @@ public class Main {
         }
 
 
-
-
-
-
         System.out.println("Система отслеживания ошибок");
         printMainText();
 
         while (true) {
             int input_numder = scanner.nextInt();
+            ReadFromTable readFromTable = new ReadFromTable();
             switch (input_numder) {
                 case 0:
                     System.out.println("Выход...");
@@ -57,15 +54,17 @@ public class Main {
                 case 1:
                     System.out.println("Проект - Пользователь - Запись об ошибке");
                     //Вывод всех записей
-                    printAllIssues();
+                    ReadIssues.printAllIssues();
                     break;
                 case 2:
                     System.out.println("Список проектов:");
+                    readFromTable.ReadFromTable(MyPatterns.PATTERN.Project);
                     //поиск проектов
-                    printUniqProjectName();
+                   // structure.Project.printUniqProjectName();
                     break;
                 case 3:
                     System.out.println("Список пользователей:");
+                    readFromTable.ReadFromTable(MyPatterns.PATTERN.User);
                     //поиск пользователей
                     printUniqUserName();
                     break;
@@ -125,7 +124,7 @@ public class Main {
         }
 
         //данные из файла уже считаны?
-        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+        if (structure.ReadIssues.isAlredeRead == 0) structure.ReadIssues.ReadAllIssuesFromFile();
 
         //поиск записей
         Collection<Issue> issues = issue;

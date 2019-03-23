@@ -19,7 +19,7 @@ public class Project {
 
     public static void printUniqProjectName() throws Exception {
 
-        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+       // if (isAlredeRead == 0) ReadAllIssuesFromFile();
 
         for (String projectName : uniqProjectName) {
             System.out.println("--> " + projectName);
@@ -30,7 +30,7 @@ public class Project {
 
     public Project(String projectName) {
         this.projectName = projectName;
-        uniqProjectName.add(projectName);
+       // uniqProjectName.add(projectName);
     }
 
     public int getProjectID() {

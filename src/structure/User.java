@@ -20,7 +20,7 @@ public class User {
 
     public User(String userName) {
         this.userName = userName;
-        uniqUserName.add(userName);
+      //  uniqUserName.add(userName);
     }
 
     public static void printUniqUserName() throws Exception {

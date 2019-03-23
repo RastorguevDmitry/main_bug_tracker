@@ -28,7 +28,7 @@ public class Issue {
         this.issueText = issueText;
         this.project = project;
         this.user = user;
-        uniqIssueText.add(issueText);
+      //  uniqIssueText.add(issueText);
     }
 
     public Issue(int issueID, String issueText, int projectID, int userID) {

@@ -1,15 +1,18 @@
 package DB;
 
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
+
 import java.io.Closeable;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class createTable implements Closeable {
+public class workTable implements Closeable {
     Connection connection;  // JDBC-соединение для работы с таблицей
     String tableName;       // Имя таблицы
 
-    createTable(String tableName) throws SQLException { // Для реальной таблицы передадим в конструктор её имя
+    workTable(String tableName) throws SQLException { // Для реальной таблицы передадим в конструктор её имя
         this.tableName = tableName;
         this.connection = IssuesDB.getConnection(); // Установим соединение с СУБД для дальнейшей работы
     }
@@ -28,15 +31,22 @@ public class createTable implements Closeable {
     void executeSqlStatement(String sql, String description) throws SQLException {
         reopenConnection(); // переоткрываем (если оно неактивно) соединение с СУБД
         Statement statement = connection.createStatement();  // Создаем statement для выполнения sql-команд
-        statement.execute(sql); // Выполняем statement - sql команду
+        try {
+            statement.execute(sql); // Выполняем statement - sql команду
+        } catch (JdbcSQLIntegrityConstraintViolationException q) {
+        }
         statement.close();      // Закрываем statement для фиксации изменений в СУБД
         if (description != null)
             System.out.println(description);
-    };
+    }
+
+
 
     void executeSqlStatement(String sql) throws SQLException {
         executeSqlStatement(sql, null);
-    };
+    }
+
+
 
 
     // Активизация соединения с СУБД, если оно не активно.

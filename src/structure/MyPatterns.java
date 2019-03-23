@@ -3,7 +3,7 @@ package structure;
 import java.util.regex.Pattern;
 
 public class MyPatterns {
-    enum PATTERN {Project, User, Issue}
+    public enum PATTERN {Project, User, Issue}
 
     private static Pattern patternALL = Pattern.compile("[><]"); // регулярные выражения
 

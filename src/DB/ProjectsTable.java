@@ -2,7 +2,7 @@ package DB;
 
 import java.sql.SQLException;
 
-public class ProjectsTable extends createTable{
+public class ProjectsTable extends workTable {
 
     public ProjectsTable() throws SQLException {
         super("projects");
@@ -10,10 +10,11 @@ public class ProjectsTable extends createTable{
 
     public void createTable() throws SQLException {
         super.executeSqlStatement("CREATE TABLE IF NOT EXISTS projects(" +
-                "idproject INT NOT NULL AUTO_INCREMENT NOT NULL PRIMARY KEY," +
+                "id INT NOT NULL AUTO_INCREMENT NOT NULL PRIMARY KEY," +
                 "nameProject varchar(45) NOT NULL," +
-                "UNIQUE INDEX idproject_UNIQUE (idproject) ,"+
-                "UNIQUE INDEX nameProject_UNIQUE (nameProject) )", "Создана таблица " + tableName);
+                "UNIQUE INDEX idprojects_UNIQUE (id) ,"+
+                "UNIQUE INDEX nameProject_UNIQUE (nameProject) )");
     }
+
 
 }

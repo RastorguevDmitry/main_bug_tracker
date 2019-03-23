@@ -43,15 +43,8 @@ public class IssuesDB {
         usersTable.createTable();
         projectsTable.createTable();
         issuesTable.createTable();
-//        // Создание внешних ключей (связt` между таблицами)
-//        shareRates.createForeignKeys();
-//        traiderShareActions.createForeignKeys();
     }
 
-
-
-
-    /////////////////////////////////////
 
 
 }
