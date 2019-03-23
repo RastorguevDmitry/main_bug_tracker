@@ -1,8 +1,14 @@
 package structure;
 
-public class Project {
-    int projectID;
+import java.util.HashSet;
 
+import static structure.ReadIssues.*;
+
+
+public class Project {
+    public static HashSet<String> uniqProjectName = new HashSet<>();
+
+    int projectID;
     String projectName;
 
     public Project(int projectID, String projectName) {
@@ -10,8 +16,21 @@ public class Project {
         this.projectName = projectName;
     }
 
+
+    public static void printUniqProjectName() throws Exception {
+
+        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+
+        for (String projectName : uniqProjectName) {
+            System.out.println("--> " + projectName);
+        }
+
+    }
+
+
     public Project(String projectName) {
         this.projectName = projectName;
+        uniqProjectName.add(projectName);
     }
 
     public int getProjectID() {

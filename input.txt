@@ -1,4 +1,8 @@
-<Project>Созадние программы</Project><User>Иван</User><Issue>добавить чтение данных</Issue>
-<Project>Улучшение программы</Project><User>Коля</User><Issue>загрузка из файла</Issue>
-<Project>Создание программы</Project><User>Артем</User><Issue>не работает кнопка</Issue>
-<Project>Создание программы</Project><User>Маша</User><Issue>не работает список</Issue>
+<Project>Project1</Project><User>User1</User><Issue>Issue1</Issue>
+<Project>Project1</Project><User>User1</User><Issue>Issue2</Issue>
+<Project>Project1</Project><User>User1</User><Issue>Issue3</Issue>
+<Project>Project2</Project><User>User2</User><Issue>Issue1</Issue>
+<Project>Project3</Project><User>User1</User><Issue>Issue4</Issue>
+<Project>Project3</Project><User>User2</User><Issue>Issue5</Issue>
+<Project>Project3</Project><User>User2</User><Issue>Issue6</Issue>
+<Project>Project3</Project><User>User3</User><Issue>Issue7</Issue>

@@ -46,7 +46,7 @@ public class MainWindow extends JFrame {
 
         // список issues
         new ReadIssues().ReadAllIssuesFromFile();
-        List<Issue> listOfIssues = new ReadIssues().issue;
+        List<Issue> listOfIssues = new Issue().issue;
        // List<String> stringListOfIssues = listOfIssues.toArray().toString();
 
         //Массив для вывода
