@@ -1,5 +1,5 @@
+import servises.ReadFromFile;
 import structure.Issue;
-import structure.ReadFromFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +33,6 @@ public class MainWindow extends JFrame {
         super("Система контроля ошибок");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
-        // catalogIssues.setLayout( new BorderLayout(5,5));
         catalogIssues.setLayout(new BorderLayout(5, 5));
         catalogIssues.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5 ));
 
@@ -50,44 +49,39 @@ public class MainWindow extends JFrame {
        // List<String> stringListOfIssues = listOfIssues.toArray().toString();
 
         //Массив для вывода
-        String[] issuesToString= new String[listOfIssues.size()];
-        issuesToString = listOfIssues.toArray(issuesToString);
-
-        issuesList.setListData(issuesToString);
-
-        listOfIssuesScroll.setPreferredSize(new Dimension(400, 500)); //минимальный размер
-        issuesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); //можно выделять несколько элементов
+//        String[] issuesToString= new String[listOfIssues.size()];
+//        System.out.println(issuesToString);
+//        issuesToString = listOfIssues.toArray(issuesToString);
+//
+//        issuesList.setListData(issuesToString);
+//
+//        listOfIssuesScroll.setPreferredSize(new Dimension(400, 500)); //минимальный размер
+//        issuesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); //можно выделять несколько элементов
 
         //слушатель нажатия на элемент листа
         issuesList.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
             }
         });
 
-
         // Слушатель нажатия кнопки "Добавить ошибку"
         buttonAddNewIssues.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
 
@@ -113,13 +107,10 @@ public class MainWindow extends JFrame {
         catalogIssues.add(listOfIssuesScroll, BorderLayout.CENTER);
         catalogIssues.add(buttonsPanel, BorderLayout.SOUTH);
 
-
         getContentPane().add(catalogIssues);
         setSize(600, 600);
         setLocationRelativeTo(null); // посередине
         setVisible(true);
-
     }
-
 
 }

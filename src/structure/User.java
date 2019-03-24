@@ -1,9 +1,11 @@
 package structure;
 
+import servises.ReadFromFile;
+
 import java.util.HashSet;
 
-import static structure.ReadFromFile.ReadAllIssues;
-import static structure.ReadFromFile.isAlredeRead;
+import static servises.ReadFromFile.ReadAllIssues;
+import static servises.ReadFromFile.isAlredeRead;
 
 public class User {
     public static HashSet<String> uniqUserName = new HashSet<>();

@@ -1,4 +1,4 @@
-package DB.table;
+package DB.tables;
 
 import DB.WorkTable;
 

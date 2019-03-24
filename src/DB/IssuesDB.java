@@ -3,9 +3,9 @@ package DB;
 import java.io.File;
 import java.sql.*;
 
-import DB.table.IssuesTable;
-import DB.table.ProjectsTable;
-import DB.table.UsersTable;
+import DB.tables.IssuesTable;
+import DB.tables.ProjectsTable;
+import DB.tables.UsersTable;
 import org.h2.tools.DeleteDbFiles;
 
 public class IssuesDB {

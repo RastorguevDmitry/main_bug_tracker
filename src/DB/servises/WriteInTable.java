@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class WriteInTable extends WorkTable {
 
     public WriteInTable() throws SQLException {
-        super("projects");
+        super();
     }
 
     // запись в таблицу пользователей и проекты

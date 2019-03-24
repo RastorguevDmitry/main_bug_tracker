@@ -1,8 +1,11 @@
 package structure;
 
+import servises.ReadFromFile;
+
 import java.util.HashSet;
 
-import static structure.ReadFromFile.*;
+import static servises.ReadFromFile.*;
+
 
 
 public class Project {

@@ -1,10 +1,11 @@
 package structure;
 
+import servises.ReadFromFile;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static structure.ReadFromFile.ReadAllIssues;
-import static structure.ReadFromFile.isAlredeRead;
+import static servises.ReadFromFile.*;
 
 public class Issue {
 

@@ -16,6 +16,10 @@ public class WorkTable implements Closeable {
         this.connection = IssuesDB.getConnection(); // Установим соединение с СУБД для дальнейшей работы
     }
 
+    protected WorkTable() throws SQLException { // Для реальной таблицы передадим в конструктор её имя
+        this.connection = IssuesDB.getConnection(); // Установим соединение с СУБД для дальнейшей работы
+    }
+
     // Закрытие
     public void close() {
         try {

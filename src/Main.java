@@ -10,9 +10,15 @@ import java.util.stream.Collectors;
 
 import static structure.Issue.*;
 import static structure.Project.*;
-import static structure.ReadFromFile.*;
+import static servises.ReadFromFile.*;
 import static structure.User.*;
 
+/*
+Дмитрий Расторгуев
+24.03.2019
+чтение данных об ошибках из файла input.txt
+сохранение данных из файла в БД (ДП Проекты, БД Пользователи, БД Ошибки)
+*/
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
@@ -21,7 +27,7 @@ public class Main {
         System.out.println("Система отслеживания ошибок");
         System.out.println("Выберете вариант работы с файлом (введите соответствующее число):\n" +
                 "--> напрямую   - 1\n" +
-                "--> через БД   - 2\n");
+                "--> через БД   - 2");
 
         int input_numder = scanner.nextInt();
         switch (input_numder) {
@@ -31,20 +37,20 @@ public class Main {
             case 2:
                 workWithDB();
                 break;
+            case 3:
+                // для десктопного приложения
+                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            new MainWindow();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                break;
         }
-
-        // для десктопного приложения
-//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    new MainWindow();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-
     }
 
     public static void printMainText() {
@@ -57,13 +63,14 @@ public class Main {
                 "--> выйти из программы   - 0\n");
     }
 
-
+    //при работе с БД
     public static void workWithDB() throws Exception {
+       // создание и заполнение БД
         try {
             IssuesDB issuesDB = new IssuesDB();
             issuesDB.createTables();
             ReadAllIssues(READFROM.DB);
-
+            System.out.println("данные загружены в БД");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ошибка SQL !");
@@ -99,7 +106,8 @@ public class Main {
                     readFromTable.ReadFromTable(ReadFromTable.TABLE.Issue);
                     break;
                 case 5:
-                    ReportMenu();
+                    //вызвать меню работы с запросом данных по Ошибкам по Пользователь+Проект
+                    ReportMenuWorkWithDB();
                     break;
             }
             printMainText();
@@ -107,7 +115,7 @@ public class Main {
     }
 
 
-    public static void ReportMenu() throws Exception {
+    public static void ReportMenuWorkWithDB() throws Exception {
         System.out.print("Введите название проекта (для возврата введите 0):  ");
         scanner.nextLine();
         String inputProject = scanner.nextLine();
@@ -126,7 +134,7 @@ public class Main {
     }
 
 
-    // работа с Файлом напрямую
+    // работа с Файлом
     public static void workWithFile() throws Exception {
         printMainText();
         while (true) {
@@ -157,7 +165,7 @@ public class Main {
                     printUniqIssueText();
                     break;
                 case 5:
-                    ReportMenuworkWithFile();
+                    ReportMenuWorkWithFile();
                     break;
             }
             printMainText();
@@ -165,7 +173,7 @@ public class Main {
 
     }
 
-    public static void ReportMenuworkWithFile() throws Exception {
+    public static void ReportMenuWorkWithFile() throws Exception {
         System.out.print("Введите название проекта (для возврата введите 0):  ");
         scanner.nextLine();
         String inputProject = scanner.nextLine();

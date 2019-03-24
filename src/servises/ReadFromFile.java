@@ -1,7 +1,10 @@
-package structure;
+package servises;
 
 import DB.servises.ReadFromTable;
 import DB.servises.WriteInTable;
+import structure.Issue;
+import structure.Project;
+import structure.User;
 
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -43,7 +46,7 @@ public class ReadFromFile {
                     writeInTable.writeInTable("users", "nameUser", user);
                     userClassUser.setUserID(ReadFromTable.getID("users", "nameUser" , user));
 
-                    writeInTable.writeInTable("issues", userClassUser.userID,
+                    writeInTable.writeInTable("issues", userClassUser.getUserID(),
                             projectClassProject.getProjectID(), issueText);
                     break;
 
