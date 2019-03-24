@@ -1,8 +1,10 @@
-package DB;
+package DB.table;
+
+import DB.WorkTable;
 
 import java.sql.SQLException;
 
-public class ProjectsTable extends workTable {
+public class ProjectsTable extends WorkTable {
 
     public ProjectsTable() throws SQLException {
         super("projects");

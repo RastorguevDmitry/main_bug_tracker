@@ -3,8 +3,8 @@ package structure;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static structure.ReadIssues.ReadAllIssuesFromFile;
-import static structure.ReadIssues.isAlredeRead;
+import static structure.ReadFromFile.ReadAllIssues;
+import static structure.ReadFromFile.isAlredeRead;
 
 public class Issue {
 
@@ -46,7 +46,7 @@ public class Issue {
     }
 
     public static void printUniqIssueText() throws Exception {
-        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+        if (isAlredeRead == 0) ReadAllIssues(ReadFromFile.READFROM.FILE);
 
         for (String issue : uniqIssueText) {
             System.out.println("--> " + issue);

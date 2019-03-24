@@ -1,7 +1,7 @@
 <Project>Project1</Project><User>User1</User><Issue>Issue1</Issue>
 <Project>Project1</Project><User>User1</User><Issue>Issue2</Issue>
 <Project>Project1</Project><User>User1</User><Issue>Issue3</Issue>
-<Project>Project2</Project><User>User2</User><Issue>Issue1</Issue>
+<Project>Project2</Project><User>User2</User><Issue>Issue8</Issue>
 <Project>Project3</Project><User>User1</User><Issue>Issue4</Issue>
 <Project>Project3</Project><User>User2</User><Issue>Issue5</Issue>
 <Project>Project3</Project><User>User2</User><Issue>Issue6</Issue>

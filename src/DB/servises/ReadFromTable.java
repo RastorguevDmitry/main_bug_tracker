@@ -1,4 +1,6 @@
-package DB;
+package DB.servises;
+
+import DB.IssuesDB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

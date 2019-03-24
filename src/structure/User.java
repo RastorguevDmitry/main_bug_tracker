@@ -2,8 +2,8 @@ package structure;
 
 import java.util.HashSet;
 
-import static structure.ReadIssues.ReadAllIssuesFromFile;
-import static structure.ReadIssues.isAlredeRead;
+import static structure.ReadFromFile.ReadAllIssues;
+import static structure.ReadFromFile.isAlredeRead;
 
 public class User {
     public static HashSet<String> uniqUserName = new HashSet<>();
@@ -22,7 +22,7 @@ public class User {
     }
 
     public static void printUniqUserName() throws Exception {
-        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+        if (isAlredeRead == 0) ReadAllIssues(ReadFromFile.READFROM.FILE);
         for (String user : uniqUserName) {
             System.out.println("--> " + user);
         }

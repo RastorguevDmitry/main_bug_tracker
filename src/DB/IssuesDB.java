@@ -3,6 +3,9 @@ package DB;
 import java.io.File;
 import java.sql.*;
 
+import DB.table.IssuesTable;
+import DB.table.ProjectsTable;
+import DB.table.UsersTable;
 import org.h2.tools.DeleteDbFiles;
 
 public class IssuesDB {
@@ -20,7 +23,7 @@ public class IssuesDB {
 
     public static Connection getConnection() throws SQLException {
         String dir = new File("").getAbsolutePath();
-        DB_DIR = dir + "/main_bug_tracker/db";
+        DB_DIR = dir + "/db";
         DB_URL = "jdbc:h2:/" + DB_DIR + "/" + DB_FILE;
         return DriverManager.getConnection(DB_URL);
     }

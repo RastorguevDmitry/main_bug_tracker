@@ -2,7 +2,7 @@ package structure;
 
 import java.util.HashSet;
 
-import static structure.ReadIssues.*;
+import static structure.ReadFromFile.*;
 
 
 public class Project {
@@ -19,7 +19,7 @@ public class Project {
 
     public static void printUniqProjectName() throws Exception {
 
-        if (isAlredeRead == 0) ReadAllIssuesFromFile();
+        if (isAlredeRead == 0) ReadAllIssues(ReadFromFile.READFROM.FILE);
 
         for (String projectName : uniqProjectName) {
             System.out.println("--> " + projectName);

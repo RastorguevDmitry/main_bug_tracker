@@ -1,8 +1,10 @@
-package DB;
+package DB.servises;
+
+import DB.WorkTable;
 
 import java.sql.SQLException;
 
-public class WriteInTable extends workTable {
+public class WriteInTable extends WorkTable {
 
     public WriteInTable() throws SQLException {
         super("projects");

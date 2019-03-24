@@ -1,5 +1,5 @@
 import structure.Issue;
-import structure.ReadIssues;
+import structure.ReadFromFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +45,7 @@ public class MainWindow extends JFrame {
         createNewIssuesDialog.add(createNewIssuesPanel);
 
         // список issues
-        new ReadIssues().ReadAllIssuesFromFile();
+        new ReadFromFile().ReadAllIssues(ReadFromFile.READFROM.FILE);
         List<Issue> listOfIssues = new Issue().issue;
        // List<String> stringListOfIssues = listOfIssues.toArray().toString();
 
