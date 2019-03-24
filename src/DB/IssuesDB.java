@@ -1,13 +1,15 @@
 package DB;
 
+import java.io.File;
 import java.sql.*;
+
 import org.h2.tools.DeleteDbFiles;
 
 public class IssuesDB {
 
-    public static final String DB_DIR = "c:/Users/rdi81/Java/IdeaProjects/main_bug_tracker/db";
+    public static String DB_DIR;
     public static final String DB_FILE = "bug_tracker";
-    public static final String DB_URL = "jdbc:h2:/" + DB_DIR + "/" + DB_FILE;
+    public static String DB_URL;
     public static final String DB_Driver = "org.h2.Driver";
 
     // Таблицы СУБД
@@ -16,8 +18,10 @@ public class IssuesDB {
     IssuesTable issuesTable;
 
 
-
     public static Connection getConnection() throws SQLException {
+        String dir = new File("").getAbsolutePath();
+        DB_DIR = dir + "/main_bug_tracker/db";
+        DB_URL = "jdbc:h2:/" + DB_DIR + "/" + DB_FILE;
         return DriverManager.getConnection(DB_URL);
     }
 
@@ -44,7 +48,6 @@ public class IssuesDB {
         projectsTable.createTable();
         issuesTable.createTable();
     }
-
 
 
 }

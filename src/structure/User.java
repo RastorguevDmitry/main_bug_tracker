@@ -8,10 +8,8 @@ import static structure.ReadIssues.isAlredeRead;
 public class User {
     public static HashSet<String> uniqUserName = new HashSet<>();
 
-
     int userID;
     String userName;
-
 
     public User(int userID, String userName) {
         this.userID = userID;
@@ -20,12 +18,11 @@ public class User {
 
     public User(String userName) {
         this.userName = userName;
-      //  uniqUserName.add(userName);
+      uniqUserName.add(userName);
     }
 
     public static void printUniqUserName() throws Exception {
         if (isAlredeRead == 0) ReadAllIssuesFromFile();
-
         for (String user : uniqUserName) {
             System.out.println("--> " + user);
         }

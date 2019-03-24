@@ -4,7 +4,6 @@ import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 
 import java.io.Closeable;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -47,12 +46,12 @@ public class workTable implements Closeable {
     }
 
 
-
-
     // Активизация соединения с СУБД, если оно не активно.
     void reopenConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = IssuesDB.getConnection();
         }
     }
+
+
 }
