@@ -20,7 +20,7 @@ public class ReadFromFile {
 
     public static int isAlredeRead = 0;
 
-    public static void ReadAllIssues(ReadFromFile.READFROM readfrom) throws Exception {
+    public static void ReadAllIssues(READFROM readfrom) throws Exception {
         if (isAlredeRead == 1) return; //issue.clear();
         //запись из файла в Лист
         List<String> lines = Files.readAllLines(Paths.get("input.txt"), Charset.defaultCharset());

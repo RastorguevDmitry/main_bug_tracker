@@ -15,7 +15,7 @@ public class ReadFromTable {
     }
 
 
-    public void ReadFromTable(ReadFromTable.TABLE table) throws SQLException, ClassNotFoundException {
+    public void ReadFromTable(TABLE table) throws SQLException, ClassNotFoundException {
 
         IssuesDB issuesDB = new IssuesDB();
         Connection connection = issuesDB.getConnection();
